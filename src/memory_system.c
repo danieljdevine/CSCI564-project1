@@ -47,7 +47,7 @@ void cache_system_cleanup(struct cache_system *cache_system)
     free(cache_system->replacement_policy);
 }
 
-void cache_system_mem_access(struct cache_system *cache_system, uint32_t address, char rw)
+int cache_system_mem_access(struct cache_system *cache_system, uint32_t address, char rw)
 {
     cache_system->stats.accesses++;
 
@@ -77,6 +77,12 @@ void cache_system_mem_access(struct cache_system *cache_system, uint32_t address
             int evicted_index = (*cache_system->replacement_policy->eviction_index)(
                 cache_system->replacement_policy, cache_system, set_idx);
 
+            // Check to ensure that the eviction index is within the set.
+            if (evicted_index < 0 || cache_system->associativity <= evicted_index) {
+                fprintf(stderr, "Eviction index %d is outside of the set!", evicted_index);
+                return 1;
+            }
+
             // Check if the eviction requires writeback.
             struct cache_line evicted = cache_system->cache_lines[set_start + evicted_index];
             if (evicted.status == MODIFIED) {
@@ -105,6 +111,9 @@ void cache_system_mem_access(struct cache_system *cache_system, uint32_t address
     // Let the replacement policy know that the cache line was accessed.
     (*cache_system->replacement_policy->cache_access)(cache_system->replacement_policy,
                                                       cache_system, set_idx, tag);
+
+    // Everything was successful.
+    return 0;
 }
 
 struct cache_line *cache_system_find_cache_line(struct cache_system *cache_system, uint32_t set_idx,

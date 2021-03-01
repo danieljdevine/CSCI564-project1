@@ -67,7 +67,9 @@ int main(int argc, char **argv)
     uint32_t address = 0;
     while (scanf("%c %x\n", &rw, &address) >= 0) {
         printf("%s at 0x%x\n", (rw == 'R' ? "read" : "write"), address);
-        cache_system_mem_access(cache_system, address, rw);
+        if (cache_system_mem_access(cache_system, address, rw) != 0) {
+            return 1;
+        }
     }
 
     // Print the statistics

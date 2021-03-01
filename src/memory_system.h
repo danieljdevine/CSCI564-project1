@@ -55,7 +55,7 @@ struct cache_system *cache_system_new(uint32_t line_size, uint32_t sets, uint32_
 void cache_system_cleanup(struct cache_system *cache_system);
 
 // Perform updates to access memory
-void cache_system_mem_access(struct cache_system *cache_system, uint32_t address, char rw);
+int cache_system_mem_access(struct cache_system *cache_system, uint32_t address, char rw);
 
 // Find the index of a tag within a set
 struct cache_line *cache_system_find_cache_line(struct cache_system *cache_system, uint32_t set_idx,
