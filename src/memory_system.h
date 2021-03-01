@@ -57,7 +57,8 @@ void cache_system_cleanup(struct cache_system *cache_system);
 // Perform updates to access memory
 int cache_system_mem_access(struct cache_system *cache_system, uint32_t address, char rw);
 
-// Find the index of a tag within a set
+// Returns a pointer to the cache line within the given set that has the given
+// tag. If no such element exists, then return NULL.
 struct cache_line *cache_system_find_cache_line(struct cache_system *cache_system, uint32_t set_idx,
                                                 uint32_t tag);
 
