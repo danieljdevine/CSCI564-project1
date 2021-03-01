@@ -15,9 +15,9 @@ struct cache_system;
 
 // This struct describes the functionality of a replacement policy. The
 // function pointers describe the three functions that every replacement policy
-// must implement. Arbitrary data can be stored in the replacement_policy_data
-// pointer and can be used to store the state of the replacement policy between
-// calls to eviction_index and cache_access.
+// must implement. Arbitrary data can be stored in the data pointer and can be
+// used to store the state of the replacement policy between calls to
+// eviction_index and cache_access.
 //
 // For those of you who are unfamiliar with function pointers, they take the
 // form:
@@ -52,7 +52,7 @@ struct replacement_policy {
 
     // This function is called right before the replacement policy is
     // deallocated. You should perform any necessary cleanup operations here.
-    // (This is where you should free the replacement_policy_data, for
+    // (This is where you should free the replacement_policy->data, for
     // example.)
     //
     // Arguments:
