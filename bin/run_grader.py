@@ -68,24 +68,6 @@ def run_sim(args, inputfile):
     return list(filter(lambda l: l.startswith("OUTPUT"), stdout.decode().split("\n")))
 
 
-def run_matrix_addition():
-    # Run the simulation.
-    cwd = os.getcwd()
-    os.chdir('matrix_addition')
-
-    make_run_process = subprocess.run(
-        ["make", "run"],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-    )
-
-    if make_run_process.returncode != 0:
-        print(make_run_process.stdout)
-        return None
-
-    os.chdir(cwd)
-
-
 # LRU and LRU_PREFER_CLEAN functionality
 # ======================================================================================
 print(f"{bcolors.BOLD}Checking LRU and LRU_PREFER_CLEAN functionality.{bcolors.ENDC}")
