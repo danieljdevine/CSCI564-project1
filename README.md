@@ -134,7 +134,6 @@ Alternatively, if you don't want to use Git, you can download a TAR.GZ of the
 source from the following URL:
 http://git.sr.ht/~sumner/aca-project1/archive/master.tar.gz
 
-
 ### Building and Running
 
 You can build the starter code by running `make` from this directory. This will
@@ -308,6 +307,7 @@ discuss potential changes.
 
 ## Credits
 
+* README and starter code developed by [Sumner Evans](https://sumnerevans.com).
 * Thanks to [Adam Sandstedt](https://github.com/AdamSandstedt) for testing the
   assignment and creating most of the input-output pairs.
 * Thanks to [Sam Sartor](https://samsartor.com) for testing the assignment.
