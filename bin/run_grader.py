@@ -42,12 +42,11 @@ test_results = []
 def test_results_add(number, name, output, score, max_score=1):
     test_results.append(
         {
-            "name": name,
-            "score": score,
             "max_score": max_score,
-            "number": number,
             "name": name,
+            "number": number,
             "output": output,
+            "score": score,
         }
     )
 
