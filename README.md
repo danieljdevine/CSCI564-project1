@@ -232,8 +232,8 @@ Your program must accept four positional command line arguments:
 * **Associativity**: this will be an integer representing the number of cache
   lines per set.
 
-Your program must accept a trace of memory access locations (one per line),
-formatted as two space-separated values that indicate whether the memory
+Your program must accept a trace of memory access locations via `stdin` (one per
+line), formatted as two space-separated values that indicate whether the memory
 operation is a read (`R`) or write (`W`) and which memory location was accessed
 as a hexadecimal number, respectively. For example:
 
