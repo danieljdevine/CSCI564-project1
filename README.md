@@ -71,9 +71,9 @@ functionality is already implemented by the starter code.*
 1. If there is a *cache hit*, then go to step 3.
 
 2. If there is a *cache miss*, then you need to find where to store the new
-   cache line cache line, evicting from the cache as necessary. Then store the
-   cache line containing the missed address in the cache. Specifically, the
-   following operations must be performed:
+   cache line, evicting from the cache as necessary. Then store the cache line
+   containing the missed address in the cache. Specifically, the following
+   operations must be performed:
 
    1. Calculate the set in the cache where the cache line needs to be stored.
 
