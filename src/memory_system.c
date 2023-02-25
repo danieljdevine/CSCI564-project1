@@ -123,12 +123,15 @@ struct cache_line *cache_system_find_cache_line(struct cache_system *cache_syste
 
     
     for (int i = 0; i < cache_system->associativity; i++) {
-        struct cache_line *line = cache_system->cache_lines + ((set_idx * cache_system->associativity + i) * sizeof(struct cache_line));
-        if (line->status == INVALID) {
-            continue;
-        } else if (line->tag == tag) {
+        struct cache_line *line = &cache_system->cache_lines[set_idx * cache_system->associativity + i];
+        // if (line->status == INVALID) {
+        //     continue;
+        // } else 
+        if (line->tag == tag) {
+            //printf("NOT NULL\n");
             return line;
         }
     }
+    //printf("NULL\n");
     return NULL;
 }
