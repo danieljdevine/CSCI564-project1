@@ -118,20 +118,13 @@ int cache_system_mem_access(struct cache_system *cache_system, uint32_t address,
 struct cache_line *cache_system_find_cache_line(struct cache_system *cache_system, uint32_t set_idx,
                                                 uint32_t tag)
 {
-    // TODO Return a pointer to the cache line within the given set that has
-    // the given tag. If no such element exists, then return NULL.
-
     
     for (int i = 0; i < cache_system->associativity; i++) {
         struct cache_line *line = &cache_system->cache_lines[set_idx * cache_system->associativity + i];
-        // if (line->status == INVALID) {
-        //     continue;
-        // } else 
+
         if (line->tag == tag) {
-            //printf("NOT NULL\n");
             return line;
         }
     }
-    //printf("NULL\n");
     return NULL;
 }
